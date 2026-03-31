@@ -28,28 +28,14 @@ Botón Urgencia: Agrega el nombre al inicio de la lista (unshift).
 Regla: El resultado debe mostrarse como una lista ordenada en el HTML. <ol>
 */
 
-let pacientes = ["Carlos", "María", "Diego", "Juan", "Marco", "Sofia"];
 function ingresaUrgencia() {
-    pacientes.unshift(nombre);
-    return pacientes.join(", ")
-};
-// esta funcion se activara al momento que el boton se presione
-function buscarBeneficiario() {
-    // los tres const estan seleccionando desde javascript al html
-    const container = document.getElementById("container2");
-    const result = document.getElementById("result2");
-    const input = document.getElementById("input2");
-    // valida si el input esta vacio.
-    if (input.value !== "") {
-        // guarda el valor del input
-        let nombre = input.value;
-        // resultado va a guardar el valor de nombre, enviandolo a la primera funcion
-        let resultado = ingresaUrgencia(nombre);
-        result.textContent = resultado;
-        input.value = "";
-        container.classList.remove("d-none");
-    } else {
-        alert("El nombre no puede quedar vacío.")
-    };
+const nombres = ["Carlos", "María", "Diego", "Juan", "Marco", "Sofia"];
+const contenedor = document.getElementById('contenedor-lista');
 
+let contenido = ""; // Empezamos con un string vacío
+
+for (let i = 0; i < nombres.length; i++) {
+    // Concatenamos: Índice+1 + el separador ".- " + el nombre + un salto de línea
+    contenido += (i + 1) + ".- " + nombres[i] + "<br>";
+}
 };
