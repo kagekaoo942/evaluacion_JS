@@ -20,7 +20,7 @@
                 <h5 class="card-title"> Ejercicio 1:</h5>
                 <input type="text" class="form-control mb-3" id="input1" placeholder="Ingrese un dato">
                 <p class="card-text">Pago de Permisos (Cálculos y Retorno).</p>
-                <a href="#" class="btn btn-primary" onclick="pagoPermisos()">Ejecutar</a>
+                <a href="#" class="btn btn-primary" onclick="moduloTesoreria()">Ejecutar</a>
                 <div id="container1" class="mt-4 d-none">
                     <h5>Resultado:</h5>
                     <div id="result1" class="alert alert-success fw-bold"></div>
@@ -32,10 +32,12 @@
             <img class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"> Ejercicio 2:</h5>
-                <input type="text" class="form-control mb-3" id="input2" placeholder="Ingrese un dato">
+                <input type="text" class="form-control mb-3" id="input2" placeholder="Ingrese un paciente">
                 <p class="card-text">Funcion con condiciones.</p>
-                <a href="#" class="btn btn-primary" onclick="buscarBeneficiario()">Ejecutar</a>
+                <a href="#" class="btn btn-success" onclick="agregarNormal()">Ejecutar</a>
+                <a href="#" class="btn btn-danger" onclick="agregarUrgencia()">Ejecutar</a>
                 <div id="container2" class="mt-4 d-none">
+                    <ol id="listaPacientes"></ol>
                     <h5>Resultado:</h5>
                     <div id="result2" class="alert alert-success fw-bold"></div>
                 </div>
@@ -46,20 +48,20 @@
             <img class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"> Ejercicio 3:</h5>
-                <input type="text" class="form-control mb-3" id="input3" placeholder="Ingrese un numero">
+                <input type="text" class="form-control mb-3" id="input3" placeholder="Ingrese un nombre">
                 <p class="card-text">Buscador de Beneficiarios (Ciclos e If).</p>
-                <a href="#" class="btn btn-primary" onclick="">Ejecutar</a>
+                <a href="#" class="btn btn-primary" onclick="Buscarlista()">Ejecutar</a>
                 <div id="container3" class="mt-4 d-none">
                     <h5>Resultado:</h5>
                     <div id="result3" class="alert alert-success fw-bold"></div>
                 </div>
             </div>
         </div>
-    <!-- JS -->
-    <script src="static/JS/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7FwiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+        <!-- JS -->
+        <script src="static/JS/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7FwiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
