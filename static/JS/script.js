@@ -83,33 +83,47 @@ Verificar si un RUT o nombre está en el Listado de entrega de beneficios.
 Lógica: Tener un arreglo con al menos 6 nombres. Usar un ciclo for para buscar si el dato ingresado existe en la lista.
 Regla: La función debe devolver "Beneficiario Verificado" o "No registrado".
 */
-
 // 1. Datos iniciales
-// 1. Datos (al menos 6 nombres)
 const beneficiarios = ["MARCO", "ANA", "JUAN", "LUCIA", "PEDRO", "ELENA"];
 
-// 2. Función Principal (La Lógica del ciclo for)
+// 2. Función de Lógica (Busca en el arreglo)
 const buscarLista = (dato) => {
-  for (let i = 0; i < beneficiarios.length; i++) {
-    // Comparamos ignorando mayúsculas y espacios
-    if (beneficiarios[i] === dato.toUpperCase().trim()) {
-      return "Beneficiario Verificado";
+    // Normalizamos la entrada: mayúsculas y sin espacios extras
+    const busqueda = dato.toUpperCase().trim();
+    
+    for (let i = 0; i < beneficiarios.length; i++) {
+        if (beneficiarios[i] === busqueda) {
+            return "Beneficiario Verificado";
+        }
     }
-  }
-  return "No registrado";
+    return "No registrado";
 };
 
-// 3. Función que llama tu botón (BuscarLista)
+// 3. Función del Botón (Interfaz)
 const BuscarLista = () => {
-  const entrada = document.getElementById("input3").value;
-  const contenedor = document.getElementById("container3");
-  const resultado = document.getElementById("result3");
+    const entrada = document.getElementById("input3").value;
+    const contenedor = document.getElementById("container3");
+    const resultadoDiv = document.getElementById("result3");
 
-  const mensaje = buscarLista(entrada);
+    // Si el input está vacío, avisamos y no seguimos
+    if (entrada.trim() === "") {
+        alert("Por favor, escribe un nombre.");
+        return;
+    }
 
-  // Escribimos el resultado
-  resultado.innerText = mensaje;
+    const mensaje = buscarLista(entrada);
+    resultadoDiv.innerText = mensaje;
 
-  // Mostramos el contenedor quitando d-none
-  contenedor.classList.remove("d-none");
+    // --- MEJORA DE COLOR ---
+    // Limpiamos clases anteriores de color
+    resultadoDiv.classList.remove("alert-success", "alert-danger");
+
+    if (mensaje === "Beneficiario Verificado") {
+        resultadoDiv.classList.add("alert-success"); // Color verde
+    } else {
+        resultadoDiv.classList.add("alert-danger");  // Color rojo
+    }
+
+    // Mostramos el resultado
+    contenedor.classList.remove("d-none");
 };
