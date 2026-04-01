@@ -78,52 +78,39 @@ const agregarUrgencia = () => {
   }
 };
 
-/*3. Módulo de Subsidios: Buscador de Beneficiarios (Ciclos e If)
-Verificar si un RUT o nombre está en el Listado de entrega de beneficios.
-Lógica: Tener un arreglo con al menos 6 nombres. Usar un ciclo for para buscar si el dato ingresado existe en la lista.
-Regla: La función debe devolver "Beneficiario Verificado" o "No registrado".
-*/
-// 1. Datos iniciales
+// Nuestra lista de datos
 const beneficiarios = ["MARCO", "ANA", "JUAN", "LUCIA", "PEDRO", "ELENA"];
 
-// 2. Función de Lógica (Busca en el arreglo)
-const buscarLista = (dato) => {
-    // Normalizamos la entrada: mayúsculas y sin espacios extras
-    const busqueda = dato.toUpperCase().trim();
+// LA ÚNICA FUNCIÓN
+function buscarLista() {
+    // 1. Capturamos los elementos del HTML
+    const input = document.getElementById("input3");
+    const resultadoDiv = document.getElementById("result3");
+    const contenedor = document.getElementById("container3");
     
+    // 2. Limpiamos el texto que escribió el usuario
+    const nombreBuscado = input.value.toUpperCase().trim();
+    let mensaje = "No registrado"; // Valor por defecto
+
+    // 3. CICLO FOR: Buscamos en la lista
     for (let i = 0; i < beneficiarios.length; i++) {
-        if (beneficiarios[i] === busqueda) {
-            return "Beneficiario Verificado";
+        if (beneficiarios[i] === nombreBuscado) {
+            mensaje = "Beneficiario Verificado";
+            break; // Si lo encontramos, dejamos de buscar
         }
     }
-    return "No registrado";
-};
 
-// 3. Función del Botón (Interfaz)
-const BuscarLista = () => {
-    const entrada = document.getElementById("input3").value;
-    const contenedor = document.getElementById("container3");
-    const resultadoDiv = document.getElementById("result3");
-
-    // Si el input está vacío, avisamos y no seguimos
-    if (entrada.trim() === "") {
-        alert("Por favor, escribe un nombre.");
-        return;
-    }
-
-    const mensaje = buscarLista(entrada);
+    // 4. MOSTRAR RESULTADO
     resultadoDiv.innerText = mensaje;
-
-    // --- MEJORA DE COLOR ---
-    // Limpiamos clases anteriores de color
+    
+    // Cambiamos el color según el resultado
     resultadoDiv.classList.remove("alert-success", "alert-danger");
-
     if (mensaje === "Beneficiario Verificado") {
-        resultadoDiv.classList.add("alert-success"); // Color verde
+        resultadoDiv.classList.add("alert-success");
     } else {
-        resultadoDiv.classList.add("alert-danger");  // Color rojo
+        resultadoDiv.classList.add("alert-danger");
     }
 
-    // Mostramos el resultado
+    // Hacemos visible el cuadro
     contenedor.classList.remove("d-none");
-};
+}
